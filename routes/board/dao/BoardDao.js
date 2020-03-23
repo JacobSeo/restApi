@@ -19,8 +19,8 @@ var boardDao = {
   	     res.render('board/boardM', {title : 'testData list ejs', data : results});
   	   });
     },
-    getDetail : function(req, res, seq){
-        dbConObj.dbopen(dbconn);
+    getDetail : function(req, res, seq, type){
+		dbConObj.dbopen(dbconn);
       	var sql = 'select seq, title, contents, ins_cr, ins_dt from t_board where seq = ?'; // 클럽목록
   	    dbconn.query(sql, seq,function(err, results, field){
     			if(err){
@@ -30,9 +30,12 @@ var boardDao = {
                     //console.log("succesfully");                    
                     var parsed = JSON.parse(JSON.stringify(results));
                     console.log(parsed[0]);
-                }
-                
-  	     res.render('board/boardV', {title : 'BoardV', data : parsed[0]});
+                }                
+		if(type == "U"){
+			res.render('board/boardU', {title : 'BoardV', data : parsed[0]});
+		}else{
+			res.render('board/boardV', {title : 'BoardV', data : parsed[0]});
+		}
   	   });
     },
     getInsert : function(req, res, body){
@@ -41,6 +44,36 @@ var boardDao = {
         var contents = body.contents;
       	var sql = "insert into t_board (title, contents, ins_cr, ins_dt) values (?,?,'1',now())"; // 클럽목록
   	    dbconn.query(sql, [title, contents],function(err, results, field){
+    			if(err){
+    				console.log(err);
+    				console.log("The query has problem");
+    			}else{
+                    //console.log("succesfully");
+                }
+                
+            res.redirect('/board');
+  	   });
+    },
+    getUpdate : function(req, res, body, id){
+        dbConObj.dbopen(dbconn);
+        var title = body.title;
+        var contents = body.contents;
+      	var sql = "update t_board set title= ?, contents =? where seq=?"; // 클럽목록
+  	    dbconn.query(sql, [title, contents, id],function(err, results, field){
+    			if(err){
+    				console.log(err);
+    				console.log("The query has problem");
+    			}else{
+                    //console.log("succesfully");
+                }
+                
+            res.redirect('/board/'+id);
+  	   });
+    },
+    getDelete : function(req, res, id){
+        dbConObj.dbopen(dbconn);
+      	var sql = "delete from t_board where seq=?"; // 클럽목록
+  	    dbconn.query(sql, id,function(err, results, field){
     			if(err){
     				console.log(err);
     				console.log("The query has problem");

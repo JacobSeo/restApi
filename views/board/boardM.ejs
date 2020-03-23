@@ -5,13 +5,9 @@
   </head>
   <body>
     <%- include('../partials/nav') %>
-
     <div class="container mb-3">
-
       <h2 class="mb-3">Board</h2>
-
       <table class="board-table table table-sm border-bottom">
-
         <thead class="thead-light">
           <tr>
             <th scope="col" class="col-sm-2">no</th>
@@ -20,7 +16,6 @@
             <th scope="col" class="col-sm-3 date">Date</th>
           </tr>
         </thead>
-
         <tbody>
           <% if(data == null || data.length == 0){ %>
             <tr>
@@ -40,13 +35,10 @@
             </tr>
           <% }) %>
         </tbody>
-
       </table>
-
       <div>
         <a class="btn btn-primary" href="/board/new">New</a>
       </div>
-
     </div>
   </body>
 </html>

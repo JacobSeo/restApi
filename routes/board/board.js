@@ -14,8 +14,7 @@ router.get('/new', function(req, res){
   });
   
 // create
-router.post('/', function(req, res){
-    
+router.post('/', function(req, res){    
     var body = req.body;
     Dao.getInsert(req, res, body);
 });
@@ -23,19 +22,26 @@ router.post('/', function(req, res){
 // show
 router.get('/:id', function(req, res){
     var param = req.params.id;
-    Dao.getDetail(req,res,param);
+    Dao.getDetail(req,res,param, "V");
 });
 
 // edit
 router.get('/:id/edit', function(req, res){
+    var param = req.params.id;
+    Dao.getDetail(req,res,param, "U");
 });
 
 // update
-router.put('/:id', function(req, res){
+router.put('/:id', function(req, res){    
+    var body = req.body;
+    var id = req.params.id;
+    Dao.getUpdate(req, res, body, id);
 });
 
 // destroy
 router.delete('/:id', function(req, res){
+    var id = req.params.id;
+    Dao.getDelete(req, res, id);
 });
   
 
