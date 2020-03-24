@@ -41,6 +41,12 @@ app.use(methodOverride('_method'));
 // Routes
 app.use('/', require('./routes/home'));
 app.use('/board', require('./routes/board/board'));
+app.use('/searchfolder', require('./routes/searchfolder/searchfolder'));
+
+process.on('uncaughtException', (err) => {
+  console.error('예기치 못한 에러', err);
+});
+
 
 // Port setting
 var port = 3000;
