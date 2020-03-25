@@ -7,22 +7,31 @@
     <%- include('../partials/nav') %>
     <div class="container mb-3">
       <h2 class="mb-3">ReadPath</h2>
-      <form action="/searchfolder" method="post">
+      <!--form action="/searchfolder" method="post" -->
         <div class="form-group">
           <div class="row">
             <div class="col-sm-1">
               <label for="searchfolder">Path</label>
             </div>
             <div class="col-sm-9">              
-              <input type="text" id="path" name="path" value="" class="form-control">          
+              <input type="text" id="path" name="path" value=""  class="form-control">          
             </div>
             <div class="col-sm-2">
-              <button type="submit" class="btn btn-primary">Submit</button>        
+              <!--button type="submit" class="btn btn-primary">Submit</button-->        
+              <input type="button" class="btn btn-primary btn-submit" value="submit"/>        
             </div>
           </div>
         </div>
-      </form>
-      <div class="form-group">
+      <!--/form-->
+      <div class="form-group">        
+        <table class="board-table table table-sm border-bottom" id="table-search">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" class="col-sm-12">file</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
         <%if(list != null || list.length > 0){
             list.forEach(function(val) { %>
               <div class="row"><%=val%></div>
@@ -30,5 +39,6 @@
         <%}%>          
       </div>
     </div>
+    <%- include('../../public/dist/js/searchfolder/searchfolderM.js') %>
   </body>
 </html>

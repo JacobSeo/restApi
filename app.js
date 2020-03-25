@@ -44,11 +44,10 @@ app.use('/board', require('./routes/board/board'));
 app.use('/searchfolder', require('./routes/searchfolder/searchfolder'));
 
 process.on('uncaughtException', (err) => {
-  console.error('예기치 못한 에러', err);
+  console.error('예기치 못한 에러', err);  
+  process.exit(1);
 });
 
-
-// Port setting
 var port = 3000;
 app.listen(port, function(){
   console.log('server on! http://localhost:'+port);
