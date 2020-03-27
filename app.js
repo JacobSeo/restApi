@@ -4,7 +4,20 @@ var path = require('path')
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+const session = require('express-session');
+
+
 var app = express();
+/*======================= sequelize ==================================*/
+const models = require("./models/index.js");
+
+models.sequelize.sync().then( () => {
+  console.log(" DB 연결 성공");
+}).catch(err => {
+  console.log("연결 실패");
+  console.log(err);
+})
+/*====================================================================*/
 
 /*====================================================================*/
 
@@ -34,12 +47,25 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 
 /*===============================session=====================================*/
-
-
+app.use(session({
+  key: 'sid',
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
+  }
+}));
 /*===========================================================================*/
+app.use(function(req, res, next){
+  let issession = req.session.issession;
+  console.log(issession);
+  res.locals.issession = issession;
+  next();
+});
 
-// Routes
 app.use('/', require('./routes/home'));
+app.use('/users', require('./routes/user'));
 app.use('/board', require('./routes/board/board'));
 app.use('/searchfolder', require('./routes/searchfolder/searchfolder'));
 
@@ -48,7 +74,7 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-var port = 3000;
+var port = 9001;
 app.listen(port, function(){
   console.log('server on! http://localhost:'+port);
 });

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <%- include('../partials/head') %>
+</head>
+<body>
+<h3>회원 가입</h3>
+<div class="container mb-3">
+    <form action="/users/sign_up" method="post">
+        <table class="board-table table table-sm border-bottom">
+            <tr>
+                <td>이름 : </td>
+                <td><input type="text" name="userName"></td>
+            </tr>
+            <tr>
+                <td>이메일 : </td>
+                <td><input type="text" name="userEmail"></td>
+            </tr>
+            <tr>
+                <td>비번 : </td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="회원가입"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

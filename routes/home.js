@@ -3,6 +3,7 @@ var router = express.Router();
 
 // Home
 router.get('/', function(req, res){
+  //let session = req.session;  
   res.render('home/welcome');
 });
 router.get('/rest', function(req, res){

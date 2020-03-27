@@ -12,5 +12,16 @@
           <li class="nav-item"><a href="/searchfolder" class="nav-link">SearchFolder</a></li>
         </ul>
       </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent2">        
+        <% if(issession){ %>
+          <form action="/users/logout" method="get">
+            <input type="submit" value="로그아웃">
+          </form>
+        <%}else{%>
+          <form action="/users/login" method="get">
+            <input type="submit" value="로그인">
+          </form>
+        <%}%>
+      </div>
     </div>
   </nav>
