@@ -20,16 +20,17 @@ router.post('/', function(req, res){
                 })
                 //console.log(files);
                 //res.render('searchfolder/searchfolderM',{list : files});
-                res.json({msg:"list", data : files});
+                let file = JSON.parse(JSON.stringify(files));
+                res.json({msg:"list", data : file});
             })
         }else{
             fileNM = path.split("/");
-            console.log(fileNM.slice(-1)[0]);
+            //console.log(fileNM.slice(-1)[0]);
             var result = extname.extname(fileNM.slice(-1)[0]);
             res.json({msg:"file", data : []});
         }
     }catch(exception){
-        console.log(exception);
+        console.log("exception >> " + exception);
         //res.render('searchfolder/searchfolderM',{list : []});
     }   
 });

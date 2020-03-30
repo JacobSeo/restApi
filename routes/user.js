@@ -71,7 +71,26 @@ router.get("/logout", function(req,res,next){
   req.session.destroy();
   res.clearCookie('sid');
 
-  res.redirect("/")
+  res.redirect("/");
 })
 
+
+router.get('/list', async function(req, res, next) {
+  let result = await models.user.findAll().then(function(users){
+      let data = new Array();
+      for(var index in users){
+        let user = {};
+        user.name = users[index].dataValues.name;
+        user.email = users[index].dataValues.email;
+        user.salt = users[index].dataValues.salt;
+        user.createdAt = users[index].dataValues.createdAt;
+        data.push(user);
+      }
+
+      data = JSON.parse(JSON.stringify(data));
+      console.log(data);
+      res.render("user/userM", {data : data});
+  });
+});
+ 
 module.exports = router;

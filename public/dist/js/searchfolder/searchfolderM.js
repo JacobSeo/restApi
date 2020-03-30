@@ -12,6 +12,7 @@ $(function(){
           success:function(data){
             //console.log(data);
             var filelist = data['data'];
+            console.log("filelist " + filelist);
             var msg = data['msg'];
             if(msg == "file"){
               alert('파일입니다.');
@@ -29,7 +30,7 @@ $(function(){
 function makeRows(filelist){
   var tbody = $('#table-search tbody');
   $.each(filelist,function(k, v){
-    console.log(v);
+    console.log(">>> "+v);
   })
 }
 </script>

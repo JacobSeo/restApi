@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container mb-3">
+      <h2 class="mb-3">사용자리스트</h2>
+      <table class="board-table table table-sm border-bottom">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" class="col-sm-1">no</th>
+            <th scope="col" class="col-sm-2">이름</th>
+            <th scope="col" class="col-sm-5">이메일</th>
+            <th scope="col" class="col-sm-3 date">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(data == null || data.length == 0){ %>
+            <tr>
+              <td colspan=3>리스트 없음</td>
+            </tr>
+          <% } %>
+          <% data.forEach(function(val) { %>
+            <tr>
+              <td><span></span></td>
+              <td>
+                <a href="/users/<%= val.salt %>"><div class="ellipsis"><%= val.name %></div></a>
+              </td>              
+              <td><%= val.email %></a></td>
+              <td class="date">
+                <span data-date=""><%= val.createdAt %></span> <!-- 1 -->
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <div>
+        <a class="btn btn-primary" href="/users/sign_up">New</a>
+      </div>
+    </div>
+  </body>
+</html>

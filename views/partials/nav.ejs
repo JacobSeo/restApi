@@ -10,9 +10,12 @@
           <li class="nav-item"><a href="/rest" class="nav-link">Rest Api</a></li>
           <li class="nav-item"><a href="/board" class="nav-link">Board</a></li>
           <li class="nav-item"><a href="/searchfolder" class="nav-link">SearchFolder</a></li>
+          <% if(issession){ %>
+            <li class="nav-item"><a href="/users/list" class="nav-link">사용자</a></li>
+          <%}%>
         </ul>
       </div>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent2">        
+      <div class="collapse navbar-collapse" id="navbarSupportedContent2">
         <% if(issession){ %>
           <form action="/users/logout" method="get">
             <input type="submit" value="로그아웃">
