@@ -1,14 +1,15 @@
 <script>
 $(function(){
     $('.btn-submit').click(function(){
+        let tbody = $('#table-search tbody');
         if($('#path').val() == ""){
             return
         }
         $.ajax({
           url: "/searchfolder",
-          type: "get",
+          type: "post",
           data : {data :$('#path').val()},
-          dataType: "jsonp",
+          dataType: "json",
           success:function(data){
             //console.log(data);
             var filelist = data['data'];
@@ -28,9 +29,13 @@ $(function(){
 });
 
 function makeRows(filelist){
-  var tbody = $('#table-search tbody');
+  let tbody = $('#table-search tbody');
+  let htmlStr ="";
   $.each(filelist,function(k, v){
-    console.log(">>> "+v);
-  })
+    htmlStr += "<tr>";
+		htmlStr += "<td>"+v+"</td>";
+		htmlStr += "</tr>";
+  });
+  tbody.append(htmlStr);
 }
 </script>
