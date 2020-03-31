@@ -9,5 +9,11 @@ router.get('/', function(req, res){
 router.get('/rest', function(req, res){
   res.render('home/rest');
 });
+router.get('/test', function(req, res){
+  let data = {}
+  data.id = "test";
+  data.name="테스터";
+  res.json({data});
+});
 
 module.exports = router;

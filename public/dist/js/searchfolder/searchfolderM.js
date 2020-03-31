@@ -6,9 +6,9 @@ $(function(){
         }
         $.ajax({
           url: "/searchfolder",
-          type: "post",
+          type: "get",
           data : {data :$('#path').val()},
-          dataType: "json",
+          dataType: "jsonp",
           success:function(data){
             //console.log(data);
             var filelist = data['data'];

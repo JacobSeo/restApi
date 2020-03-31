@@ -67,6 +67,7 @@ app.use(function(req, res, next){
 app.use('/', require('./routes/home'));
 app.use('/users', require('./routes/user'));
 app.use('/board', require('./routes/board/board'));
+app.use('/addr', require('./routes/addr/addr'));
 app.use('/searchfolder', require('./routes/searchfolder/searchfolder'));
 
 process.on('uncaughtException', (err) => {
