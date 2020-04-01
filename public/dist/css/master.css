@@ -25,3 +25,45 @@ white-space: pre-line; /* 2 */
 .post-info{
 font-size: 0.8em;
 }
+
+.nav-menu-bar {
+    /*background: hotpink;*/
+    display: inline-block;
+    width: 100%;
+}
+.nav-menu { 
+    margin: 0; padding: 0; 
+}
+.nav-menu li {
+    float: left;
+    list-style:none;
+    position: relative;
+}
+.nav-menu li:hover { 
+    background: white; 
+}
+.nav-menu li:hover>a { 
+    color: gray; 
+}
+.nav-menu a {
+    color: black;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+.nav-menu ul {
+    background: #eee;
+    border: 1px solid silver;
+    display: none;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 180px;
+}
+.nav-menu ul li { float: none;  }
+.nav-menu ul li:hover { background: #ddd; }
+.nav-menu ul li:hover a { color: black; }
+.nav-menu ul a { color: black; }
+.nav-menu ul ul { left: 100%; top: 0; }
+.nav-menu ul ul li {float:left; margin-right:10px;}

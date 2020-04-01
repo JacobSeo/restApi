@@ -8,6 +8,11 @@ router.get('/', function(req, res){
     res.render('searchfolder/searchfolderM',{list : []});
 });
 
+
+router.get('/uploadfile', function(req, res){
+    res.render('searchfolder/uploadfile',{list : []});
+});
+
 router.post('/', function(req, res){   
     var path = req.body.data;
     var files = new Array();

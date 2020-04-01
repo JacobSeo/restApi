@@ -6,38 +6,39 @@
   <body>
     <%- include('../partials/nav') %>
     <div class="container mb-3">
-      <h2 class="mb-3">ReadPath</h2>
+      <h2 class="mb-3">SheetJS : JS</h2>
+      <nav aria-label="breadcrumb"> <!-- 1 -->
+        <ol class="breadcrumb p-1 pl-2 pr-2">
+          <li class="breadcrumb-item">
+            파일을 서버에 전달하기전 SheetJS를 활용하여 엑셀의 내용을 JSON으로 반환해준다.
+          </li>
+        </ol>
+      </nav>
       <!--form action="/searchfolder" method="post" -->
         <div class="form-group">
           <div class="row">
             <div class="col-sm-1">
-              <label for="searchfolder">Path</label>
+              <label for="searchfolder">File</label>
             </div>
             <div class="col-sm-9">              
-              <input type="text" id="path" name="path" value=""  class="form-control">          
+              <input type="file" id="my_file_input"class="form-control">          
             </div>
             <div class="col-sm-2">
               <!--button type="submit" class="btn btn-primary">Submit</button-->        
               <input type="button" class="btn btn-primary btn-submit" value="submit"/>        
             </div>
           </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-1">
+              <label for="searchfolder">JSON</label>
+            </div>
+            <div class="col-sm-9">              
+              <div id="json-list"></div>
+            </div>            
+          </div>
         </div>
       <!--/form-->
-      <div class="form-group">        
-        <table class="board-table table table-sm border-bottom" id="table-search">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col" class="col-sm-12">file</th>
-            </tr>
-          </thead>
-          <tbody id="table-tbody"></tbody>
-        </table>
-        <%if(list != null || list.length > 0){
-            list.forEach(function(val) { %>
-              <div class="row"><%=val%></div>
-          <% }) %>
-        <%}%>          
-      </div>
     </div>
     <%- include('../../public/dist/js/searchfolder/searchfolderM.js') %>
   </body>
