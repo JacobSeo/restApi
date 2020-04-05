@@ -1,6 +1,25 @@
 <script>
 $(function(){
-    
+    $('#uri-search-btn').click(function(){
+        $('#changeDiv').empty();
+        let uri = $('#uri').val();
+        let rad = $('input[name="rad"]:checked').val();
+        let tmp1, tmp2;
+        console.log("rad : ",rad);
+        if(rad == "0"){            
+            tmp1 = encodeURI(uri);
+            tmp2 = encodeURIComponent(uri);
+        }else{            
+            tmp1 = decodeURI(uri);
+            tmp2 = decodeURIComponent(uri);
+        }
+        console.log(tmp1, " >< ", tmp2);
+        let html = "";
+        html += "> "+tmp1 + "<br>";
+        html += "> "+tmp2;
+        $('#changeDiv').append(html);
+
+    });
     
 });
 

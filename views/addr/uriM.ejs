@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>    
+    <div class="container mb-3">
+        <nav aria-label="breadcrumb"> <!-- 1 -->
+          <ol class="breadcrumb p-1 pl-2 pr-2">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/addr/uri">주소</a></li>
+            <li class="breadcrumb-item active" aria-current="page">URI검색</li>
+          </ol>
+        </nav>
+        <div class="form-group">
+            <div class="row">
+            <div class="col-sm-1">
+                <label for="searchfolder">URI</label>
+            </div>
+            <div class="col-sm-9"> 
+              <div class="row">
+                <div class="col-sm-3">                
+                  <input type="radio" id="rad" name="rad" value="0"/>인코딩
+                  <input type="radio" id="rad" name="rad" value="1"/>디코딩
+                </div>
+                <div class="col-sm-9">
+                  <input type="text" id="uri" name="uri" value=""  class="form-control"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">              
+                <input type="button" class="btn btn-primary btn-submit" id="uri-search-btn" value="submit"/> 
+            </div>
+            </div>
+        </div>
+        <div id="changeDiv"></div>
+      </div>
+    <%- include('../../public/dist/js/addr.js') %>
+  </body>
+</html>

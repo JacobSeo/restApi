@@ -17,13 +17,18 @@
           <!--li class="nav-item"><a href="/" class="nav-link">Home</a></li-->
           <li class="nav-item"><a href="/rest" class="nav-link">Rest Api</a></li>
           <li class="nav-item"><a href="/board" class="nav-link">Board</a></li>
-          <li ><a href="#">파일</a>
+          <li class="nav-item"><a href="#">파일</a>
             <ul>
               <li><a href="/searchfolder" class="nav-link">SearchFolder</a></li>
               <li><a href="/searchfolder/uploadfile" class="nav-link">FileUpload</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a href="/addr" class="nav-link">주소검색</a></li>
+          <li class="nav-item"><a href="#">검색</a>
+            <ul>
+              <li><a href="/addr" class="nav-link">주소검색</a></li>
+              <li><a href="/addr/uri" class="nav-link">URI검색</a></li>
+            </ul>
+          </li>
           <% if(issession){ %>
             <li class="nav-item"><a href="/users/list" class="nav-link">사용자</a></li>
           <%}%>

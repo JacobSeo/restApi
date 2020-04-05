@@ -5,4 +5,8 @@ router.get("/", function(req, res){
     res.render("addr/addrM");
 }); 
 
+router.get("/uri", function(req, res){
+    res.render("addr/uriM");
+}); 
+
 module.exports = router;
