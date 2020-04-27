@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Webpack Babel Setup</title>
+    <script>
+        // length가 4개이하 또는 4개이상이면 각각의 3번쩨 단어의 오름차순으로 정렬
+        let arr = ['mario','luppy','plus', 'amazon', 'alex','mask'];
+
+        let lowFour = new Array();
+        let highFour = new Array();
+        let _arr = new Array(); //최종 sort된 애들 담는다.
+
+        // 길이 체크
+        function checkLenght(){
+            arr.forEach(function(e){
+                if(e.length == '4'){
+                    lowFour.push(e);
+                }else{
+                    highFour.push(e);
+                }
+            });
+            findMid(lowFour);
+            findMid(highFour);
+
+        }
+
+        // 각각 배열에 담는다.
+        function findMid(val){
+            let map = {};
+            val.forEach(function(v){
+                //console.log(v);
+                var size = v.length;
+                for(var i =0; i <= size; i++){
+                    map[v.charAt(2)] = v;
+                }
+            });
+            makeSort(map);            
+        }
+
+        // 정렬 
+        function makeSort(map){
+            let arr = new Array();
+            for(var key in map){
+                console.log(key);
+                arr.push(key);
+            }
+            arr.sort();
+            //console.log(arr);
+            let size = arr.length;
+            
+            for(var i=0; i<size; i++){
+                    //console.log(arr[i]);
+                for(var key in map){
+                    if(arr[i] == key){
+                        _arr.push(map[key]);
+                    }
+                }
+            }
+
+            makediv(_arr);
+        }
+
+        function makediv(Arr){
+            console.log(Arr);
+            let div = "";
+            Arr.forEach(function(e){
+                div += "<p>"+e+"</p>";                
+            });
+            document.getElementById("divmap").innerHTML = div;
+        }
+
+    </script>
+  </head>
+  <body onload="checkLenght()">
+    <div id="divmap"></div>
+  </body>
+</html>
+
