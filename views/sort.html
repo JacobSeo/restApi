@@ -29,10 +29,7 @@
                 let _arr = new Array();
                 arr.forEach(function(v){
                     if(e == v.length){
-                        if($.inArray(v,_arr) > -1){
-                        }else{
-                            _arr.push(v);
-                        }
+                        if($.inArray(v,_arr) === -1) _arr.push(v);
                     }
                 });
                 console.log(_arr);
@@ -44,11 +41,7 @@
         function findMid(val){
             let map = {};
             val.forEach(function(v){
-                //console.log(v);
-                var size = v.length;
-                for(var i =0; i <= size; i++){
-                    map[v.charAt(2)] = v;
-                }
+                map[v.charAt(2)] = v;
             });
             makeSort(map);            
         }
@@ -91,4 +84,3 @@
     <div id="divmap"></div>
   </body>
 </html>
-
