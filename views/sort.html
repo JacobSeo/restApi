@@ -1,29 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>React Webpack Babel Setup</title>
     <script>
-        // length가 4개이하 또는 4개이상이면 각각의 3번쩨 단어의 오름차순으로 정렬
-        let arr = ['mario','luppy','plus', 'amazon', 'alex','mask'];
+        // length가 4개이하 또는 4개이상이면 각각의 3번쩨 단어의 오름차순으로 정렬 단. 문자열 length는 오름차순이다.
+        let arr = ['mario','luppy','plus', 'amazon', 'alex','mask','seo'];
 
         let lowFour = new Array();
         let highFour = new Array();
-        let _arr = new Array(); //최종 sort된 애들 담는다.
+        let map = {};
+
+        let arrdata = new Array(); //최종 sort된 애들 담는다.
 
         // 길이 체크
         function checkLenght(){
+            let lenArr = new Array();
             arr.forEach(function(e){
-                if(e.length == '4'){
-                    lowFour.push(e);
-                }else{
-                    highFour.push(e);
-                }
+                var cnt = e.length;                
+                if($.inArray(cnt,lenArr) === -1) lenArr.push(cnt);
             });
-            findMid(lowFour);
-            findMid(highFour);
 
+            console.log(lenArr);
+
+            lenArr.sort();
+
+            lenArr.forEach(function(e){
+                let _arr = new Array();
+                arr.forEach(function(v){
+                    if(e == v.length){
+                        if($.inArray(v,_arr) > -1){
+                        }else{
+                            _arr.push(v);
+                        }
+                    }
+                });
+                console.log(_arr);
+                findMid(_arr);
+            });
         }
-
+        
         // 각각 배열에 담는다.
         function findMid(val){
             let map = {};
@@ -41,7 +57,7 @@
         function makeSort(map){
             let arr = new Array();
             for(var key in map){
-                console.log(key);
+                //console.log(key);
                 arr.push(key);
             }
             arr.sort();
@@ -52,16 +68,16 @@
                     //console.log(arr[i]);
                 for(var key in map){
                     if(arr[i] == key){
-                        _arr.push(map[key]);
+                        arrdata.push(map[key]);
                     }
                 }
             }
 
-            makediv(_arr);
+            makediv(arrdata);
         }
 
         function makediv(Arr){
-            console.log(Arr);
+            //console.log(Arr);
             let div = "";
             Arr.forEach(function(e){
                 div += "<p>"+e+"</p>";                
