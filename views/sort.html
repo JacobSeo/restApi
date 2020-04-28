@@ -6,11 +6,9 @@
     <script>
         // length가 4개이하 또는 4개이상이면 각각의 3번쩨 단어의 오름차순으로 정렬 단. 문자열 length는 오름차순이다.
         let arr = ['mario','luppy','plus', 'amazon', 'alex','mask','seo'];
-
         let lowFour = new Array();
         let highFour = new Array();
         let map = {};
-
         let arrdata = new Array(); //최종 sort된 애들 담는다.
 
         // 길이 체크
@@ -20,11 +18,8 @@
                 var cnt = e.length;                
                 if($.inArray(cnt,lenArr) === -1) lenArr.push(cnt);
             });
-
-            console.log(lenArr);
-
+          
             lenArr.sort();
-
             lenArr.forEach(function(e){
                 let _arr = new Array();
                 arr.forEach(function(v){
@@ -37,7 +32,7 @@
             });
         }
         
-        // 각각 배열에 담는다.
+        // 각각 맵에 담는다.
         function findMid(val){
             let map = {};
             val.forEach(function(v){
@@ -50,15 +45,12 @@
         function makeSort(map){
             let arr = new Array();
             for(var key in map){
-                //console.log(key);
                 arr.push(key);
             }
             arr.sort();
-            //console.log(arr);
-            let size = arr.length;
-            
+          
+            let size = arr.length;            
             for(var i=0; i<size; i++){
-                    //console.log(arr[i]);
                 for(var key in map){
                     if(arr[i] == key){
                         arrdata.push(map[key]);
@@ -70,7 +62,6 @@
         }
 
         function makediv(Arr){
-            //console.log(Arr);
             let div = "";
             Arr.forEach(function(e){
                 div += "<p>"+e+"</p>";                
